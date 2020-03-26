@@ -45,7 +45,7 @@ public class UserJdbcRepository implements UserRepository {
 	@Override
 	public User findById(Long id) {
 		String query = "select * from user where id = ?";
-		return jdbcTemplate.queryForObject(query, new RowMapper<User>(){
+		return jdbcTemplate.queryForObject(query,new Object[] {id}, new RowMapper<User>(){
 
 			@Override
 			public User mapRow(ResultSet rs, int rowNum) throws SQLException {

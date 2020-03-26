@@ -18,12 +18,14 @@ ${action}
 				<td>Username</td>
 				<td>Name</td>
 				<td>Surname</td>
+				<td>Show user by ID</td>
 			</tr>
 			<c:forEach items="${users}" var="users">
 				<tr>
 					<td>${users.username}</td>
 					<td>${users.firstname}</td>
 					<td>${users.lastname}</td>
+					<td><a href="../springMvcConfiguration02/users/showUser?id=<c:out value = '${users.id}'/>">Show user</a></td>
 				</tr>
 			</c:forEach>
 			<tr>

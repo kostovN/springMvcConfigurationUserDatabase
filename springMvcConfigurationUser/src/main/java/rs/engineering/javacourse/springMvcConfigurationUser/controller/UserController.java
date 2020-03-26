@@ -53,11 +53,19 @@ public class UserController extends AbstractController {
 	@RequestMapping(value = "/save", method = RequestMethod.POST)
 	public String save(@ModelAttribute(name = "user") User user, HttpServletRequest request,
 			HttpServletResponse response) {
-		String error = "";
 		List<User> users = userService.getAll();
 		userService.save(user);
 		request.getServletContext().setAttribute("users", users);
 		return "redirect:/users/addUser";
+	}
+	
+	@RequestMapping(value = "/showUser", method = RequestMethod.GET)
+	public String showUser(HttpServletRequest request,
+			HttpServletResponse response) {
+		Long id = Long.parseLong(request.getParameter("id"));
+		User user = userService.findById(id);
+		request.getServletContext().setAttribute("user", user);
+		return "/WEB-INF/views/user/showUser";
 	}
 
 }
